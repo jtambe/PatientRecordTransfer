@@ -3,25 +3,25 @@ import {
     Typography
 } from '@mui/material';
 
-function Header() {
+function Header({title}) {
   const headerStyle = {
-    backgroundColor: "#FFFFFF",
     display: "flex",
-    justifyContent: "center",
-    alignItems: "center",
-    height: "80px",
+  justifyContent: "center",
+  alignItems: "center",
+  height: "120px",
+  textAlign: "center",
   };
 
   const titleStyle = {
     color: "#3F51B5", 
     fontWeight: "bold",
-    fontSize: "24px",
+    fontSize: "50px",
   };
 
   return (
     <div style={headerStyle}>
       <Typography variant="h6" style={titleStyle}>
-        Loyal Health Information Network 
+        {title} 
       </Typography>
     </div>
   );

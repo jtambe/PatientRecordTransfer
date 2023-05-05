@@ -2,61 +2,56 @@
 import Image from 'next/image'
 import styles from './page.module.css'
 import AssignmentIcon from '@mui/icons-material/Assignment';
-import NoSsr from '@mui/base/NoSsr';
-
+import Header from '../app/components/header'
 
 export default function Home() {
   return (
     <main className={styles.main}>
-      <div className={styles.description}>
-        {/* <p>
-          Get started by editing&nbsp;
-          <code className={styles.code}>app/page.js</code>
-        </p> */}
-          <Image
+      <Header title="Loyal Health Information Network" />
+      <div style={{ display: "flex", alignItems: "center" }}>
+        <Image
             className={styles.logo}
-            src="/next.svg"
+            src="/doc1.png"
             alt="Next.js Logo"
-            width={180}
-            height={37}
+            width={200}
+            height={200}
             priority
           />
-        <div>
+        <div className={styles.fileIcon}>
+          <AssignmentIcon fontSize="large" className={styles.imganim} />
+        </div>
+        <Image
+            className={styles.logo}
+            src="/doc2.png"
+            alt="Next.js Logo"
+            width={200}
+            height={200}
+            priority
+          />
+      </div>
+
+      <div style={{ 
+  
+  padding: "10px", 
+  borderRadius: "5px", 
+  textAlign: "center",
+  fontSize:'20px'
+}}>
+  Securely transfers patient records between healthcare providers.
+</div>
+      <div className={styles.center}>
+        <div className={styles.loginPrompt}>
           <a
-            href="https://vercel.com?utm_source=create-next-app&utm_medium=appdir-template&utm_campaign=create-next-app"
-            target="_blank"
+            href="/login"
+            className={styles.card}
             rel="noopener noreferrer"
           >
-            By{' '}
-            <Image
-              src="/vercel.svg"
-              alt="Vercel Logo"
-              className={styles.vercelLogo}
-              width={100}
-              height={24}
-              priority
-            />
+            <h2>
+              <bold>Login</bold> <span>-&gt;</span>
+            </h2>
+            <p>Login to transfer patient records</p>
           </a>
         </div>
-      </div>
-      
-      <div className={styles.fileIcon}>
-      <AssignmentIcon fontSize="large" className={styles.imganim}/>
-      </div>
-      
-      <div className={styles.center}>
-          <div className={styles.loginPrompt}>
-              <a
-                href="/login"
-                className={styles.card}
-                rel="noopener noreferrer"
-              >
-                <h2>
-                  <bold>Login</bold> <span>-&gt;</span>
-                </h2>
-                <p>Login to transfer patient records</p>
-              </a>
-            </div>
       </div>
     </main>
   )

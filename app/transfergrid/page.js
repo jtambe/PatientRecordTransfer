@@ -1,6 +1,7 @@
 'use client';
 
 import * as React from 'react';
+import { useRouter } from 'next/navigation';
 import { styled } from '@mui/material/styles';
 import {
     Box,
@@ -12,6 +13,7 @@ import { PatientList } from '../components/PatientList'
 import { ProviderList } from '../components/ProviderList'
 import { patients, providers } from '../data'
 
+
 const Column = styled(Grid)(({ theme }) => ({
     display: 'flex',
     flexDirection: 'column',
@@ -20,16 +22,13 @@ const Column = styled(Grid)(({ theme }) => ({
 
 }));
 
-
-
-export default function App() {
+function TransferGrid() {
     const [currentPatient, setCurrentPatient] = React.useState({});
-
-    console.log(currentPatient)
+    const router = useRouter();
 
     return (
         <Box sx={{ flexGrow: 1, padding: '25px' }}>
-                <Header />
+            <Header title="Transfer Portal" />
             <Grid container spacing={2} sx={{ marginTop: '100px', marginBottom: '100px' }}>
                 <Column item xs={6}>
                     <ColumnTitle title="Patients" count={patients.length} />
@@ -40,7 +39,9 @@ export default function App() {
                     <ProviderList providers={providers} currentPatient={currentPatient} />
                 </Column>
             </Grid>
-          
+
         </Box>
     );
 }
+
+export default TransferGrid;
