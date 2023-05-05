@@ -23,7 +23,7 @@ function Copyright(props) {
     <Typography variant="body2" color="text.secondary" align="center" {...props}>
       {'Copyright © '}
       <Link color="inherit" href="https://mui.com/">
-        Your Website
+        Loyal Health Information Network
       </Link>{' '}
       {new Date().getFullYear()}
       {'.'}
@@ -34,15 +34,22 @@ function Copyright(props) {
 const theme = createTheme();
 
 export default function SignIn() {
-    const router = useRouter();
-    const handleSubmit = (event) => {
+  const router = useRouter();
+
+  const handleSubmit = (event) => {
     event.preventDefault();
     const data = new FormData(event.currentTarget);
+    const email = data.get('email');
+    const password = data.get('password');
     console.log({
       email: data.get('email'),
       password: data.get('password'),
     });
-    router.push('/transfergrid')
+    const pathname = '/transfergrid';
+    console.log('pathname:', pathname);
+    console.log('router:', router);
+    console.log('push:', router.push);
+    router.push(pathname,  { query: { email,password } });
   };
 
   return (
@@ -61,30 +68,32 @@ export default function SignIn() {
             <LockOutlinedIcon />
           </Avatar>
           <Typography component="h1" variant="h5">
-            Sign in
+            Sign In
           </Typography>
-          <Box component="form" onSubmit={handleSubmit} noValidate sx={{ mt: 1 }}>
+          <Box component="form" onSubmit={handleSubmit} noValidate sx={{ mt: 1, backgroundColor: 'white', padding: 2 }}>
             <NoSsr>
-            <TextField
-              margin="normal"
-              required
-              fullWidth
-              id="email"
-              label="Email Address"
-              name="email"
-              autoComplete="email"
-              autoFocus
-            />
-            <TextField
-              margin="normal"
-              required
-              fullWidth
-              name="password"
-              label="Password"
-              type="password"
-              id="password"
-              autoComplete="current-password"
-            />
+              <TextField
+                variant="filled"
+                margin="normal"
+                required
+                fullWidth
+                id="email"
+                label="Email Address"
+                name="email"
+                autoComplete="email"
+                autoFocus
+              />
+              <TextField
+                variant="filled"
+                margin="normal"
+                required
+                fullWidth
+                name="password"
+                label="Password"
+                type="password"
+                id="password"
+                autoComplete="current-password"
+              />
             </NoSsr>
             <FormControlLabel
               control={<Checkbox value="remember" color="primary" />}
@@ -112,7 +121,7 @@ export default function SignIn() {
             </Grid>
           </Box>
         </Box>
-        <Copyright sx={{ mt: 8, mb: 4 }} />
+        <Copyright sx={{ mt: 8, mb: 4, color: 'white' }} />
       </Container>
     </ThemeProvider>
   );

@@ -35,9 +35,11 @@ export default function SendRecordsButton({ provider, currentPatient, facility }
     setOpen(false);
   };
 
+  const isDisabled = currentPatient && currentPatient.medicalRecords?.length > 0
+
   return (
     <div>
-      <Button variant="contained" color="primary" onClick={handleButtonClick} disabled={currentPatient.medicalRecords? false: true}>
+      <Button variant="contained" color="primary" onClick={handleButtonClick} disabled={isDisabled ? false : true}>
         Send Records
       </Button>
       <ConfirmDialog currentPatient={currentPatient} provider={provider} facility={facility} open={dialogOpen} handleClose={handleDialogClose} handleConfirm={handleDialogConfirm} />
